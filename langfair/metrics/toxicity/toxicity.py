@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union, Generator
 
 from langfair.metrics.utils.classifier_metrics import (
     ExpectedMaximum,
@@ -276,7 +276,7 @@ class ToxicityMetrics:
             return scores
 
     @staticmethod
-    def _split(list_a: List[str], chunk_size: int) -> List[str]:
+    def _split(list_a: List[str], chunk_size: int) -> Generator[List[str], None, None]:
         """Partitions list"""
         for i in range(0, len(list_a), chunk_size):
             yield list_a[i : i + chunk_size]
